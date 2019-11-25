@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+@if (User.Identity.IsAuthenticated)
+{
+    <form method="post" asp-controller="Account" asp-action="LogOff">
+        <ul class="nav navbar-nav navbar-right">
+            <li> @User.Identity.Name </li>
+            <li><input type="submit" class="btn btn-link navbar-btn navbar-link" value=@Localizer["Exit"] /></li>
+        </ul>
+    </form>
+
+}
+else
+{
+      <a class="navbar-brand"  asp-controller="Account" asp-action="Login">@Localizer["Entrance"] </a>
+      <a class="navbar-brand" asp-controller="Account" asp-action="Register">@Localizer["Registration"]</a> 
+   
+}

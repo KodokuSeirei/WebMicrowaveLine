@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<h1>@Localizer["Header"]</h1>
+@model IEnumerable<Queue>
+<h2>@ViewBag.Error</h2>
+@if (User.Identity.IsAuthenticated)
+{
+
+    <a class="btn btn-primary btn-large btn-start" asp-action="MicrowaveSelection">@Localizer["ToGetInQueue"]</a>
+    <a class="btn btn-primary btn-large btn-skip" asp-action="ExitTheQueue">@Localizer["GetOutOfQueue"]</a>
+}
+<table class="table">
+    <tr>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewBag.RoomSort">
+                @Localizer["RelaxRoomName"]
+            </a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewBag.MicrowaveSort">
+                @Localizer["MicrowaveName"]
+            </a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewBag.PositionSort">
+                @Localizer["Position"]
+            </a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewBag.UserNameSort">
+                @Localizer["UserName"]
+            </a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewBag.UserEmailSort">
+                Email
+            </a>
+        </th>
+    </tr>
+    @foreach (Queue item in Model)
+    {
+        <tr>
+            <td>@item.RelaxRoomName</td>
+            <td>@item.MicrowaveName</td>
+            <td>@item.NumberPosition</td>
+            <td>@item.UserName</td>
+            <td>@item.UserEmail</td>
+            <td>
+                @if (User.IsInRole("admin"))
+                {
+                    <form asp-action="Delete" asp-route-id="@item.Id" method="post">
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            @Localizer["Delete"]
+                        </button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+    
+</table>

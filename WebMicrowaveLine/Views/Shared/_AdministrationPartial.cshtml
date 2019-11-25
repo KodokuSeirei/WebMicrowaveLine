@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+@if (User.IsInRole("admin"))
+{
+
+    
+        <li>  <a class="navbar-brand" asp-controller="Users" asp-action="Index">@Localizer["Users"]</a> </li>
+        <li>  <a class="navbar-brand" asp-controller="Roles" asp-action="Index">@Localizer["Roles"]</a> </li>
+    
+}
+

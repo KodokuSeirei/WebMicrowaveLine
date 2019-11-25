@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+@if (User.Identity.IsAuthenticated)
+{
+    @using (Html.BeginForm("ToGetInQueue", "Home", FormMethod.Post))
+    {
+    <h1>@Localizer["ChooseAMicrowave"]</h1>
+
+    <h2>@Localizer["RoyalRelaxRoom"]</h2>
+
+        <button name="action" value="firstMicrowave"><img src="~/images/Microwaves/1.jpg" width="300" height="200" alt="ASP.NET" class="img-responsive" /></button>
+        <button name="action" value="secondMicrowave"> <img src="~/images/Microwaves/microwave_PNG15745.png" width="300" height="200" alt="ASP.NET" class="img-responsive" /></button>
+
+        <h2>@Localizer["NormalRelaxRoom"]</h2>
+
+        <button name="action" value="thirdMicrowave"><img src="~/images/Microwaves/polzovatsya-takoj-svch-pechyu-ni-v-koem-sluchae-nelzya-no-vosstanovit-svoimi-rukami-mozhno.jpg" width="300" height="200" alt="ASP.NET" class="img-responsive" /></button>
+        <button name="action" value="fourthMicrowave"> <img src="~/images/Microwaves/maxresdefault.jpg" width="300" height="200" alt="ASP.NET" class="img-responsive" /></button>
+    }
+}
+else
+{
+<h1>@Localizer["LogInOrCreateAnAccount"]</h1>
+}

@@ -1,0 +1,35 @@
+﻿@model WebMicrowaveLine.ViewModels.CreateUserViewModel
+@{
+    @Localizer["UserRegistration"];
+}
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+<form asp-action="Create" asp-controller="Users">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="UserName" class="control-label">@Localizer["UserName"]</label>
+        <input type="text" asp-for="UserName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Birthday" class="control-label">@Localizer["Birthday"]</label>
+        <input type="date" asp-for="Birthday" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Adress" class="control-label">@Localizer["Adress"]</label>
+        <input type="text" asp-for="Adress" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Email</label>
+        <input type="text" asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label">@Localizer["Password"]</label>
+        <input type="text" asp-for="Password" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value=@Localizer["Add"] class="btn btn-default" />
+    </div>
+</form>

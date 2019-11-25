@@ -1,0 +1,32 @@
+﻿@model IEnumerable<WebMicrowaveLine.Models.User>
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+<h1>@Localizer["Header"]</h1>
+
+
+<table class="table">
+    <tr><th>@Localizer["UserName"]</th><th>Email</th><th>@Localizer["FullName"]</th><th>@Localizer["Birthday"]<th>@Localizer["Adress"]</th></tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>@user.FullName</td>
+            <td>@user.Birthday</td>
+            <td>@user.Adress</td>
+
+            <td>
+                <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@user.Id">@Localizer["Change"]</a>
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        @Localizer["Delete"]
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+
+</table>
+<a asp-action="Create">@Localizer["AddUser"]</a>
